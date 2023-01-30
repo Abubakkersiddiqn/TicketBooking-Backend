@@ -12,7 +12,7 @@ import passportStrategy from './passport.js'
 import cookieSession from 'cookie-session';
 import dotenv from 'dotenv';
 const app = express();
-const port = process.env.PORT 
+const port = 8800
 const keys =process.env.keys
 
 dotenv.config()
@@ -33,7 +33,7 @@ app.use(cookieParser())
 app.use(
 	cookieSession({
 		name: "session",
-		keys: [keys],
+		keys: ['abu'],
 		maxAge: 24 * 60 * 60 * 100,
   
 	})

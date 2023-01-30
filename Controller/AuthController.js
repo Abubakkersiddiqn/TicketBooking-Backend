@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt  from "jsonwebtoken";
 
 
-const jwt_key =process.env.jwt
+
 export const register =(req,res)=>{
 //checking user exist 
 
@@ -46,7 +46,7 @@ export const login =(req,res)=>{
       if (!isPasswordCorrect)
         return res.status(400).json("Wrong username or password!");
   
-      const token = jwt.sign({ id: data[0].id }, jwt_key);
+      const token = jwt.sign({ id: data[0].id }, 'jwtkey');
       console.log(token,'tokennn');
       const { password, ...other } = data[0];
   
