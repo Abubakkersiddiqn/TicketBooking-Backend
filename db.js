@@ -1,9 +1,14 @@
 import mysql from 'mysql';
 
+
+const user = process.env.user
+const host = process.env.host
+const password = process.env.password
+const database = process.env.database
 export const db= mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password:"Abu@1706",
-    database:"ticketbooking",
+    host: host,
+    user: user,
+    password:password,
+    database:database,
     dateStrings: ['DATE','DATETIME']
 })

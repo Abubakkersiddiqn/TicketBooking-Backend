@@ -1,6 +1,8 @@
 
 import Stripe from 'stripe';
-const stripe = new Stripe('sk_test_51MT5FaSEULRJHhb7b1kSPPGZnmM6359GUYuVsANBNnOKKX5ewH7xOd2j2XtHx6X03VW1EG3nOj4WtaojxIob8NuJ004SBguT4v');
+
+const stripe_key = process.env.stripe_key;
+const stripe = new Stripe(stripe_key);
 export const payment = async (req, res) => {
     let status, error;
     const { token, amount } = req.body;

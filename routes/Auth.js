@@ -4,7 +4,7 @@ import { login, logout, register } from '../Controller/AuthController.js';
 const router= express.Router();
 import passport from 'passport'
 
-const CLIENT_URL = "http://localhost:3000/";
+const CLIENT_URL = "https://transcendent-elf-ed3c89.netlify.app/";
 
 
 router.get("/login/success", (req, res) => {
@@ -29,7 +29,7 @@ router.get("/logout", (req, res) => {
  
   
     req.logout();
-    res.redirect("http://localhost:3000/login");
+    res.redirect("https://transcendent-elf-ed3c89.netlify.app/login");
 
 
   

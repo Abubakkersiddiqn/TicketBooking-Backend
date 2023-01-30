@@ -10,14 +10,15 @@ export const getAllMovie=(req,res)=>{
 }
 
 export const addMovie=(req,res)=>{
-    const q = "INSERT INTO movie(`name`,`poster`,`rating`,`summary`,`trailer`,`price`) VALUES(?)"
+    const q = "INSERT INTO movie(`name`,`poster`,`rating`,`summary`,`trailer`,`price`,`showTiming`) VALUES(?)"
 const values =[
     req.body.name,
     req.body.poster,
     req.body.rating,
     req.body.summary,
     req.body.trailer,
-    req.body.price
+    req.body.price,
+    req.body.showTiming
 ]
 db.query(q,[values],(err,data)=>{
     if(err) return res.json(err);

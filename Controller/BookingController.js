@@ -3,7 +3,7 @@ import { db } from "../db.js";
 
 export const movieBooking =(req,res)=>{
     
-    const q="INSERT INTO booking(`moviename`,`selectedseat`,`noofseat`,`totalprice`,`mid`,`uid`,`bookedDate`,`showTime`) VALUES(?)";
+    const q="INSERT INTO booking(`moviename`,`selectedseat`,`noofseat`,`totalprice`,`mid`,`uid`,`showTime`) VALUES(?)";
 
    const values=[
         req.body.moviename,
@@ -13,22 +13,20 @@ export const movieBooking =(req,res)=>{
         
         req.body.mid,
         req.body.uid,
-        new Date(),
+       
         req.body.showTime
     ]
 
     db.query(q,[values,req.params.id],(err,data)=>{
         if(err) return res.json(err);
-        if(data) {  
-            data.bookedDate.toLocaleString(); 
-        }
+        
         return res.json("Booking Confirm");
     })
 
   
 }
 export const bookingStatus =(req,res)=>{
-   const q="SELECT `username`, `moviename` ,`selectedseat`, `noofseat`, `totalprice` FROM users u JOIN booking b ON u.id=b.uid WHERE u.id = ?"
+   const q="SELECT `username`, `moviename` ,`selectedseat`, `noofseat`, `totalprice`,`showTime` FROM users u JOIN booking b ON u.id=b.uid WHERE u.id = ?"
 
     db.query(q,[req.params.id],(err,data)=>{
         if(err) return res.json(err)

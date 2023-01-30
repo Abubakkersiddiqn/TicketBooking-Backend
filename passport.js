@@ -5,11 +5,12 @@ import passport from "passport"
 import { db } from './db.js';
 
 const User = db.users
+const clientSecret=process.env.clientSecret
 const passportStrategy = passport.use(
 	new GoogleStrategy(
 		{
-			clientID: "573781333069-3v8a1qmse5624qg5letmotknpmvoeog4.apps.googleusercontent.com",
-			clientSecret: "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",
+			clientID: '573781333069-3v8a1qmse5624qg5letmotknpmvoeog4.apps.googleusercontent.com',
+			clientSecret: clientSecret,
 			callbackURL: "http://localhost:8800/api/auth/google/callback",
 			scope: ["profile", "email"],
 		},

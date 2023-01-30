@@ -10,24 +10,30 @@ import passport from 'passport';
 import PaymentRoute from './routes/PaymentRoute.js';
 import passportStrategy from './passport.js'
 import cookieSession from 'cookie-session';
+import dotenv from 'dotenv';
 const app = express();
+const port = process.env.PORT 
+const keys =process.env.keys
+
+dotenv.config()
 const corsOptions = {
     
     origin: [
-      "http://localhost:3000",
+      "https://transcendent-elf-ed3c89.netlify.app/",
      
     ],
     credentials: true,
     exposedHeaders: ["set-cookie"],
   };
   
+
 app.use(express.json());
 app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(
 	cookieSession({
 		name: "session",
-		keys: ["abu"],
+		keys: [keys],
 		maxAge: 24 * 60 * 60 * 100,
   
 	})
@@ -46,6 +52,6 @@ app.use('/api/user',UserRoute);
 app.use('/api/auth',AuthRoute);
 app.use('/api/payment',PaymentRoute);
 
-app.listen(8800,()=>{
+app.listen(port,()=>{
     console.log("Listening on port")
 })
